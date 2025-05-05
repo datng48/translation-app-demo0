@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { RequestService } from "@/lib/services/request.service";
 import axios from "axios";
 
 export async function POST(request: Request) {

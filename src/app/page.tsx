@@ -27,8 +27,8 @@ export default function Home() {
     <Layout className="min-h-screen h-screen flex flex-col">
       <Content className="flex-1 flex flex-col items-center justify-center p-8 bg-gray-50">
         <header className="text-center mb-8">
-          <Title level={2}>Simple Translator</Title>
-          <Text type="secondary">Translate text between languages</Text>
+          <Title level={2}>Demo Translator</Title>
+          <Text type="secondary">Translate text</Text>
         </header>
 
         <main className="w-full max-w-3xl mx-auto">

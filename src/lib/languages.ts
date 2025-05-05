@@ -1,8 +1,7 @@
 export const languages = [
-  { code: "auto", name: "Detect language" },
+  { code: "auto", name: "Auto detect" },
   { code: "en", name: "English" },
   { code: "vi", name: "Vietnamese" },
-  { code: "es", name: "Spanish" },
   { code: "fr", name: "French" },
 ];
 

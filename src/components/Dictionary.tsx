@@ -41,7 +41,6 @@ export default function Dictionary() {
   const [isLoadingHistory, setIsLoadingHistory] = useState(false);
   const [error, setError] = useState("");
 
-  // Fetch recent lookups when component mounts
   useEffect(() => {
     fetchRecentLookups();
   }, []);
@@ -79,11 +78,9 @@ export default function Dictionary() {
       }
 
       setDefinition(data);
-      // Refresh recent lookups after a successful lookup
       fetchRecentLookups();
-    } catch (err) {
-      setError("Dictionary lookup failed. Please try again.");
-      console.error(err);
+    } catch {
+      setError("Error");
     } finally {
       setIsLoading(false);
     }

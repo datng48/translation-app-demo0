@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { languages } from "@/lib/languages";
 import { Button, Select, Input, Alert } from "antd";
-import { SwapOutlined, GlobalOutlined } from "@ant-design/icons";
+import { GlobalOutlined } from "@ant-design/icons";
 
 const { TextArea } = Input;
 
@@ -77,26 +77,10 @@ export default function Translator() {
       }
 
       setTranslatedText(data.translatedText);
-    } catch (err) {
-      setError("Translation failed. Please try again.");
-      console.error(err);
+    } catch {
+      setError("Error");
     } finally {
       setIsLoading(false);
-    }
-  };
-
-  const handleSwap = () => {
-    if (sourceLanguage === "auto") {
-      return;
-    }
-
-    const temp = sourceLanguage;
-    setSourceLanguage(targetLanguage);
-    setTargetLanguage(temp);
-
-    if (translatedText) {
-      setSourceText(translatedText);
-      setTranslatedText(sourceText);
     }
   };
 
@@ -119,7 +103,6 @@ export default function Translator() {
         </span>
       );
     }
-
     return null;
   };
 
@@ -140,16 +123,6 @@ export default function Translator() {
           />
           {getSourceLanguageDisplay()}
         </div>
-
-        <Button
-          type="primary"
-          shape="circle"
-          icon={<SwapOutlined />}
-          onClick={handleSwap}
-          size="large"
-          className="mx-2"
-          disabled={sourceLanguage === "auto"}
-        />
 
         <Select
           value={targetLanguage}

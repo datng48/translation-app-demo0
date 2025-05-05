@@ -1,12 +1,6 @@
 import { NextResponse } from "next/server";
+import { RequestService } from "@/lib/services/request.service";
 import axios from "axios";
-
-interface ApiError {
-  response?: {
-    data?: Record<string, unknown>;
-  };
-  message?: string;
-}
 
 export async function POST(request: Request) {
   try {
@@ -61,16 +55,10 @@ export async function POST(request: Request) {
       detectedLanguage = detectedLanguage.replace(/[^a-z]/g, "");
 
       return NextResponse.json({ detectedLanguage });
-    } catch (apiError: unknown) {
-      const error = apiError as ApiError;
-      console.error("OpenAI API error:", error.response?.data || error.message);
-      return NextResponse.json(
-        { error: "Language detection service unavailable" },
-        { status: 503 }
-      );
+    } catch {
+      return NextResponse.json({ error: "Error" }, { status: 503 });
     }
-  } catch (error) {
-    console.error("Language detection error:", error);
+  } catch {
     return NextResponse.json(
       { error: "Failed to detect language" },
       { status: 500 }
